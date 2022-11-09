@@ -1,0 +1,537 @@
+---
+import { Code } from 'astro/components';
+import { Icon } from 'astro-icon';
+import { removeSpaceToLowercase } from '@config';
+import { cheatsheetHeadings } from '@config';
+const { shiki, content, slug } = Astro.props;
+const prettyContent = removeSpaceToLowercase(content.title);
+let showCode = true;
+
+import ExtendedColors from '@components/cheatsheet/customize/color/ExtendedColors.astro';
+import ThemeColors from '@components/cheatsheet/customize/color/ThemeColors.astro';
+import AllColors from '@components/cheatsheet/customize/color/AllColors.astro';
+import Importing from '@components/cheatsheet/customize/sass/Importing.astro';
+
+import Headings from '@components/cheatsheet/contents/typography/Headings.astro';
+import HeadingsCode from '@components/cheatsheet/contents/typography/Headings.astro?raw'
+import DisplayHeadings from '@components/cheatsheet/contents/typography/DisplayHeadings.astro';
+import DisplayHeadingsCode from '@components/cheatsheet/contents/typography/DisplayHeadings.astro?raw';
+import Lead from '@components/cheatsheet/contents/typography/Lead.astro';
+import LeadCode from '@components/cheatsheet/contents/typography/Lead.astro?raw';
+import InlineTextElements from '@components/cheatsheet/contents/typography/InlineTextElements.astro';
+import InlineTextElementsCode from '@components/cheatsheet/contents/typography/InlineTextElements.astro?raw';
+import Abbreviations from '@components/cheatsheet/contents/typography/Abbreviations.astro';
+import AbbreviationsCode from '@components/cheatsheet/contents/typography/Abbreviations.astro?raw';
+import Blockquotes from '@components/cheatsheet/contents/typography/Blockquotes.astro';
+import BlockquotesCode from '@components/cheatsheet/contents/typography/Blockquotes.astro?raw';
+import NamingASource from '@components/cheatsheet/contents/typography/NamingASource.astro';
+import NamingASourceCode from '@components/cheatsheet/contents/typography/NamingASource.astro?raw';
+import UnstyledList from '@components/cheatsheet/contents/typography/UnstyledList.astro';
+import UnstyledListCode from '@components/cheatsheet/contents/typography/UnstyledList.astro?raw';
+import InlineList from '@components/cheatsheet/contents/typography/InlineList.astro';
+import InlineListCode from '@components/cheatsheet/contents/typography/InlineList.astro?raw';
+import ResponsiveImages from '@components/cheatsheet/contents/images/ResponsiveImages.astro';
+import ResponsiveImagesCode from '@components/cheatsheet/contents/images/ResponsiveImages.astro?raw';
+import ThumbnailImages from '@components/cheatsheet/contents/images/ThumbnailImages.astro';
+import ThumbnailImagesCode from '@components/cheatsheet/contents/images/ThumbnailImages.astro?raw';
+import Table from '@components/cheatsheet/contents/tables/Table.astro';
+import TableCode from '@components/cheatsheet/contents/tables/Table.astro?raw';
+import StripedRows from '@components/cheatsheet/contents/tables/StripedRows.astro';
+import StripedRowsCode from '@components/cheatsheet/contents/tables/StripedRows.astro?raw';
+import StripedColumns from '@components/cheatsheet/contents/tables/StripedColumns.astro';
+import StripedColumnsCode from '@components/cheatsheet/contents/tables/StripedColumns.astro?raw';
+import TableVariants from '@components/cheatsheet/contents/tables/TableVariants.astro';
+import TableVariantsCode from '@components/cheatsheet/contents/tables/TableVariants.astro?raw';
+import ColoredBorder from '@components/cheatsheet/contents/tables/ColoredBorder.astro';
+import ColoredBorderCode from '@components/cheatsheet/contents/tables/ColoredBorder.astro?raw';
+import FigureOverview from '@components/cheatsheet/contents/figures/FigureOverview.astro';
+import FigureOverviewCode from '@components/cheatsheet/contents/figures/FigureOverview.astro?raw';
+
+import BasicFormOverview from '@components/cheatsheet/forms/basic-form/BasicFormOverview.astro';
+import BasicFormOverviewCode from '@components/cheatsheet/forms/basic-form/BasicFormOverview.astro?raw';
+import DisabledFormOverview from '@components/cheatsheet/forms/disabled-form/DisabledFormOverview.astro';
+import DisabledFormOverviewCode from '@components/cheatsheet/forms/disabled-form/DisabledFormOverview.astro?raw';
+import InputSizingOverview from '@components/cheatsheet/forms/sizing/InputSizingOverview.astro';
+import InputSizingOverviewCode from '@components/cheatsheet/forms/sizing/InputSizingOverview.astro?raw';
+import InputGroupOverview from '@components/cheatsheet/forms/input-group/InputGroupOverview.astro';
+import InputGroupOverviewCode from '@components/cheatsheet/forms/input-group/InputGroupOverview.astro?raw';
+import FloatingLabelsOverview from '@components/cheatsheet/forms/floating-labels/FloatingLabelsOverview.astro';
+import FloatingLabelsOverviewCode from '@components/cheatsheet/forms/floating-labels/FloatingLabelsOverview.astro?raw';
+import ValidationCustomStyles from '@components/cheatsheet/forms/validation/ValidationCustomStyles.astro';
+import ValidationCustomStylesCode from '@components/cheatsheet/forms/validation/ValidationCustomStyles.astro?raw';
+import ValidationBrowserDefaults from '@components/cheatsheet/forms/validation/ValidationBrowserDefaults.astro';
+import ValidationBrowserDefaultsCode from '@components/cheatsheet/forms/validation/ValidationBrowserDefaults.astro?raw';
+import ValidationServerSide from '@components/cheatsheet/forms/validation/ValidationServerSide.astro';
+import ValidationServerSideCode from '@components/cheatsheet/forms/validation/ValidationServerSide.astro?raw';
+import ValidationTooltips from '@components/cheatsheet/forms/validation/ValidationTooltips.astro';
+import ValidationTooltipsCode from '@components/cheatsheet/forms/validation/ValidationTooltips.astro?raw';
+
+import AccordionOverview from '@components/cheatsheet/components/accordion/AccordionOverview.astro';
+import AccordionOverviewCode from '@components/cheatsheet/components/accordion/AccordionOverview.astro?raw';
+import AlertVariants from '@components/cheatsheet/components/alerts/AlertVariants.astro';
+import AlertVariantsCode from '@components/cheatsheet/components/alerts/AlertVariants.astro?raw';
+import DismissibleAlert from '@components/cheatsheet/components/alerts/DismissibleAlert.astro';
+import DismissibleAlertCode from '@components/cheatsheet/components/alerts/DismissibleAlert.astro?raw';
+import AlertWithContent from '@components/cheatsheet/components/alerts/AlertWithContent.astro';
+import AlertWithContentCode from '@components/cheatsheet/components/alerts/AlertWithContent.astro?raw';
+import BasicBadge from '@components/cheatsheet/components/badge/BasicBadge.astro';
+import BasicBadgeCode from '@components/cheatsheet/components/badge/BasicBadge.astro?raw';
+import RoundedPill from '@components/cheatsheet/components/badge/RoundedPill.astro';
+import RoundedPillCode from '@components/cheatsheet/components/badge/RoundedPill.astro?raw';
+import BreadcrumbOverview from '@components/cheatsheet/components/breadcrumb/BreadcrumbOverview.astro';
+import BreadcrumbOverviewCode from '@components/cheatsheet/components/breadcrumb/BreadcrumbOverview.astro?raw';
+import SolidButtons from '@components/cheatsheet/components/buttons/SolidButtons.astro';
+import SolidButtonsCode from '@components/cheatsheet/components/buttons/SolidButtons.astro?raw';
+import OutlineButtons from '@components/cheatsheet/components/buttons/OutlineButtons.astro';
+import OutlineButtonsCode from '@components/cheatsheet/components/buttons/OutlineButtons.astro?raw';
+import ButtonSizing from '@components/cheatsheet/components/buttons/ButtonSizing.astro'
+import ButtonSizingCode from '@components/cheatsheet/components/buttons/ButtonSizing.astro?raw';
+import BasicButtonGroup from '@components/cheatsheet/components/button-group/BasicButtonGroup.astro';
+import BasicButtonGroupCode from '@components/cheatsheet/components/button-group/BasicButtonGroup.astro?raw';
+import MixedButtonGroup from '@components/cheatsheet/components/button-group/MixedButtonGroup.astro';
+import MixedButtonGroupCode from '@components/cheatsheet/components/button-group/MixedButtonGroup.astro?raw';
+import OutlinedButtonGroup from '@components/cheatsheet/components/button-group/OutlinedButtonGroup.astro';
+import OutlinedButtonGroupCode from '@components/cheatsheet/components/button-group/OutlinedButtonGroup.astro?raw';
+import ButtonGroupToolbar from '@components/cheatsheet/components/button-group/ButtonGroupToolbar.astro';
+import ButtonGroupToolbarCode from '@components/cheatsheet/components/button-group/ButtonGroupToolbar.astro?raw';
+import VerticalButtonGroup from '@components/cheatsheet/components/button-group/VerticalButtonGroup.astro';
+import VerticalButtonGroupCode from '@components/cheatsheet/components/button-group/VerticalButtonGroup.astro?raw';
+import ImageCap from '@components/cheatsheet/components/card/ImageCap.astro';
+import ImageCapCode from '@components/cheatsheet/components/card/ImageCap.astro?raw';
+import HeaderAndFooter from '@components/cheatsheet/components/card/HeaderAndFooter.astro';
+import HeaderAndFooterCode from '@components/cheatsheet/components/card/HeaderAndFooter.astro?raw';
+import CardListGroup from '@components/cheatsheet/components/card/CardListGroup.astro';
+import CardListGroupCode from '@components/cheatsheet/components/card/CardListGroup.astro?raw';
+import HorizontalImage from '@components/cheatsheet/components/card/HorizontalImage.astro';
+import HorizontalImageCode from '@components/cheatsheet/components/card/HorizontalImage.astro?raw';
+import CarouselOverview from '@components/cheatsheet/components/carousel/CarouselOverview.astro';
+import CarouselOverviewCode from '@components/cheatsheet/components/carousel/CarouselOverview.astro?raw';
+
+import CopyCodeSnippetOverview from '@components/cheatsheet/components/copy-code-snippet/CopyCodeSnippetOverview.astro';
+import CopyCodeSnippetSizing from '@components/cheatsheet/components/copy-code-snippet/CopyCodeSnippetSizing.astro';
+import CopyCodeSnippetSizingCode from '@components/cheatsheet/components/copy-code-snippet/CopyCodeSnippetSizing.astro?raw';
+import CopyCodeSnippetCssVariables from '@components/cheatsheet/components/copy-code-snippet/CopyCodeSnippetCssVariables.astro';
+import CopyCodeSnippetSassVariables from '@components/cheatsheet/components/copy-code-snippet/CopyCodeSnippetSassVariables.astro';
+
+import DropdownButtonSizing from '@components/cheatsheet/components/dropdowns/DropdownButtonSizing.astro';
+import DropdownButtonSizingCode from '@components/cheatsheet/components/dropdowns/DropdownButtonSizing.astro?raw';
+import SplitButton from '@components/cheatsheet/components/dropdowns/SplitButton.astro';
+import SplitButtonCode from '@components/cheatsheet/components/dropdowns/SplitButton.astro?raw';
+import DropdownDirections from '@components/cheatsheet/components/dropdowns/DropdownDirections.astro';
+import DropdownDirectionsCode from '@components/cheatsheet/components/dropdowns/DropdownDirections.astro?raw';
+import ListGroupStates from '@components/cheatsheet/components/list-group/ListGroupStates.astro';
+import ListGroupStatesCode from '@components/cheatsheet/components/list-group/ListGroupStates.astro?raw';
+import ListGroupFlush from '@components/cheatsheet/components/list-group/ListGroupFlush.astro';
+import ListGroupFlushCode from '@components/cheatsheet/components/list-group/ListGroupFlush.astro?raw';
+import ListGroupVariants from '@components/cheatsheet/components/list-group/ListGroupVariants.astro';
+import ListGroupVariantsCode from '@components/cheatsheet/components/list-group/ListGroupVariants.astro?raw';
+import ModalOverview from '@components/cheatsheet/components/modal/ModalOverview.astro';
+import ModalOverviewCode from '@components/cheatsheet/components/modal/ModalOverview.astro?raw';
+import NavbarWithInputs from '@components/cheatsheet/components/navbar/NavbarWithInputs.astro';
+import NavbarWithInputsCode from '@components/cheatsheet/components/navbar/NavbarWithInputs.astro?raw';
+import NavbarWithImage from '@components/cheatsheet/components/navbar/NavbarWithImage.astro';
+import NavbarWithImageCode from '@components/cheatsheet/components/navbar/NavbarWithImage.astro?raw';
+import BaseNav from '@components/cheatsheet/components/navs-and-tabs/BaseNav.astro';
+import BaseNavCode from '@components/cheatsheet/components/navs-and-tabs/BaseNav.astro?raw';
+import NavTabs from '@components/cheatsheet/components/navs-and-tabs/NavTabs.astro';
+import NavTabsCode from '@components/cheatsheet/components/navs-and-tabs/NavTabs.astro?raw';
+import NavPills from '@components/cheatsheet/components/navs-and-tabs/NavPills.astro';
+import NavPillsCode from '@components/cheatsheet/components/navs-and-tabs/NavPills.astro?raw';
+import BasicPagination from '@components/cheatsheet/components/pagination/BasicPagination.astro';
+import BasicPaginationCode from '@components/cheatsheet/components/pagination/BasicPagination.astro?raw';
+import PaginationWithIcons from '@components/cheatsheet/components/pagination/PaginationWithIcons.astro';
+import PaginationWithIconsCode from '@components/cheatsheet/components/pagination/PaginationWithIcons.astro?raw';
+import PaginationSizing from '@components/cheatsheet/components/pagination/PaginationSizing.astro';
+import PaginationSizingCode from '@components/cheatsheet/components/pagination/PaginationSizing.astro?raw';
+import PaginationStates from '@components/cheatsheet/components/pagination/PaginationStates.astro';
+import PaginationStatesCode from '@components/cheatsheet/components/pagination/PaginationStates.astro?raw';
+import PopoverDirections from '@components/cheatsheet/components/popovers/PopoverDirections.astro';
+import PopoverDirectionsCode from '@components/cheatsheet/components/popovers/PopoverDirections.astro?raw';
+import DismissiblePopover from '@components/cheatsheet/components/popovers/DismissablePopover.astro';
+import DismissiblePopoverCode from '@components/cheatsheet/components/popovers/DismissablePopover.astro?raw';
+import BasicProgressBar from '@components/cheatsheet/components/progress/BasicProgressBar.astro';
+import BasicProgressBarCode from '@components/cheatsheet/components/progress/BasicProgressBar.astro?raw';
+import ProgressBarWithLabels from '@components/cheatsheet/components/progress/ProgressBarWithLabels.astro';
+import ProgressBarWithLabelsCode from '@components/cheatsheet/components/progress/ProgressBarWithLabels.astro?raw';
+import ProgressBarVariants from '@components/cheatsheet/components/progress/ProgressBarVariants.astro';
+import ProgressBarVariantsCode from '@components/cheatsheet/components/progress/ProgressBarVariants.astro?raw';
+import MultipleBars from '@components/cheatsheet/components/progress/MultipleBars.astro';
+import MultipleBarsCode from '@components/cheatsheet/components/progress/MultipleBars.astro?raw';
+import StripedProgressBar from '@components/cheatsheet/components/progress/StripedProgressBar.astro';
+import StripedProgressBarCode from '@components/cheatsheet/components/progress/StripedProgressBar.astro?raw';
+import AnimatedStripes from '@components/cheatsheet/components/progress/AnimatedStripes.astro';
+import AnimatedStripesCode from '@components/cheatsheet/components/progress/AnimatedStripes.astro?raw';
+import ScrollspyOverview from '@components/cheatsheet/components/scrollspy/ScrollspyOverview.astro';
+import ScrollspyOverviewCode from '@components/cheatsheet/components/scrollspy/ScrollspyOverview.astro?raw';
+import BorderSpinners from '@components/cheatsheet/components/spinners/BorderSpinners.astro';
+import BorderSpinnersCode from '@components/cheatsheet/components/spinners/BorderSpinners.astro?raw';
+import GrowingSpinners from '@components/cheatsheet/components/spinners/GrowingSpinners.astro';
+import GrowingSpinnersCode from '@components/cheatsheet/components/spinners/GrowingSpinners.astro?raw';
+import ToastOverview from '@components/cheatsheet/components/toast/ToastOverview.astro';
+import ToastOverviewCode from '@components/cheatsheet/components/toast/ToastOverview.astro?raw';
+import TooltipsOverview from '@components/cheatsheet/components/tooltips/TooltipsOverview.astro';
+import TooltipsOverviewCode from '@components/cheatsheet/components/tooltips/TooltipsOverview.astro?raw';
+
+
+let selectedCode;
+
+switch(content) {
+    case cheatsheetHeadings.Color1:
+        showCode = false;
+        break;
+    case cheatsheetHeadings.Color2:
+        showCode = false;
+        break;
+    case cheatsheetHeadings.Color3:
+        showCode = false;
+        break;
+    case cheatsheetHeadings.SASS1:
+        showCode = false;
+        break;
+    case cheatsheetHeadings.Typography1:
+        selectedCode = HeadingsCode;
+        break;
+    case cheatsheetHeadings.Typography2:
+        selectedCode = DisplayHeadingsCode;
+        break;
+    case cheatsheetHeadings.Typography3:
+        selectedCode = LeadCode;
+        break;
+    case cheatsheetHeadings.Typography4:
+        selectedCode = InlineTextElementsCode;
+        break;
+    case cheatsheetHeadings.Typography5:
+        selectedCode = AbbreviationsCode;
+        break;
+    case cheatsheetHeadings.Typography6:
+        selectedCode = BlockquotesCode;
+        break;
+    case cheatsheetHeadings.Typography7:
+        selectedCode = NamingASourceCode;
+        break;
+    case cheatsheetHeadings.Typography8:
+        selectedCode = UnstyledListCode;
+        break;
+    case cheatsheetHeadings.Typography9:
+        selectedCode = InlineListCode;
+        break;
+    case cheatsheetHeadings.Images1:
+        selectedCode = ResponsiveImagesCode;
+        break;
+    case cheatsheetHeadings.Images2:
+        selectedCode = ThumbnailImagesCode;
+        break;
+    case cheatsheetHeadings.Tables1:
+        selectedCode = TableCode;
+        break;
+    case cheatsheetHeadings.Tables2:
+        selectedCode = StripedRowsCode;
+        break;
+    case cheatsheetHeadings.Tables3:
+        selectedCode = StripedColumnsCode;
+        break;
+    case cheatsheetHeadings.Tables4:
+        selectedCode = TableVariantsCode;
+        break;
+    case cheatsheetHeadings.Tables5:
+        selectedCode = ColoredBorderCode;
+        break;
+    case cheatsheetHeadings.Figures1:
+        selectedCode = FigureOverviewCode;
+        break;
+    case cheatsheetHeadings.BasicForm1:
+        selectedCode = BasicFormOverviewCode;
+        break;
+    case cheatsheetHeadings.DisabledForm1:
+        selectedCode = DisabledFormOverviewCode;
+        break;
+    case cheatsheetHeadings.InputSizing1:
+        selectedCode = InputSizingOverviewCode;
+        break;
+    case cheatsheetHeadings.InputGroup1:
+        selectedCode = InputGroupOverviewCode;
+        break;
+    case cheatsheetHeadings.FloatingLabels1:
+        selectedCode = FloatingLabelsOverviewCode;
+        break;
+    case cheatsheetHeadings.Validation1:
+        selectedCode = ValidationCustomStylesCode;
+        break;
+    case cheatsheetHeadings.Validation2:
+        selectedCode = ValidationBrowserDefaultsCode;
+        break;
+    case cheatsheetHeadings.Validation3:
+        selectedCode = ValidationServerSideCode;
+        break;
+    case cheatsheetHeadings.Validation4:
+        selectedCode = ValidationTooltipsCode;
+        break;
+    case cheatsheetHeadings.Accordion1:
+        selectedCode = AccordionOverviewCode;
+        break;
+    case cheatsheetHeadings.Alerts1:
+        selectedCode = AlertVariantsCode;
+        break;
+    case cheatsheetHeadings.Alerts2:
+        selectedCode = DismissibleAlertCode;
+        break;
+    case cheatsheetHeadings.Alerts3:
+        selectedCode = AlertWithContentCode;
+        break;
+    case cheatsheetHeadings.Badge1:
+        selectedCode = BasicBadgeCode;
+        break;
+    case cheatsheetHeadings.Badge2:
+        selectedCode = RoundedPillCode;
+        break;
+    case cheatsheetHeadings.Breadcrumb1:
+        selectedCode = BreadcrumbOverviewCode;
+        break;
+    case cheatsheetHeadings.Buttons1:
+        selectedCode = SolidButtonsCode;
+        break;
+    case cheatsheetHeadings.Buttons2:
+        selectedCode = OutlineButtonsCode;
+        break;
+    case cheatsheetHeadings.Buttons3:
+        selectedCode = ButtonSizingCode;
+        break;
+    case cheatsheetHeadings.ButtonGroup1:
+        selectedCode = BasicButtonGroupCode;
+        break;
+    case cheatsheetHeadings.ButtonGroup2:
+        selectedCode = MixedButtonGroupCode;
+        break;
+    case cheatsheetHeadings.ButtonGroup3:
+        selectedCode = OutlinedButtonGroupCode;
+        break;
+    case cheatsheetHeadings.ButtonGroup4:
+        selectedCode = ButtonGroupToolbarCode;
+        break;
+    case cheatsheetHeadings.ButtonGroup5:
+        selectedCode = VerticalButtonGroupCode;
+        break;
+    case cheatsheetHeadings.Card1:
+        selectedCode = ImageCapCode;
+        break;
+    case cheatsheetHeadings.Card2:
+        selectedCode = HeaderAndFooterCode;
+        break;
+    case cheatsheetHeadings.Card3:
+        selectedCode = CardListGroupCode;
+        break;
+    case cheatsheetHeadings.Card4:
+        selectedCode = HorizontalImageCode;
+        break;
+    case cheatsheetHeadings.Carousel1:
+        selectedCode = CarouselOverviewCode;
+        break;
+    case cheatsheetHeadings.CopyCodeSnippet1:
+        showCode = false;
+        break;
+    case cheatsheetHeadings.CopyCodeSnippet2:
+        selectedCode = CopyCodeSnippetSizingCode;
+        break;
+    case cheatsheetHeadings.CopyCodeSnippet3:
+        showCode = false;
+        break;
+    case cheatsheetHeadings.CopyCodeSnippet4:
+        showCode = false;
+        break;
+    case cheatsheetHeadings.Dropdowns1:
+        selectedCode = DropdownButtonSizingCode;
+        break;
+    case cheatsheetHeadings.Dropdowns2:
+        selectedCode = SplitButtonCode;
+        break;
+    case cheatsheetHeadings.Dropdowns3:
+        selectedCode = DropdownDirectionsCode;
+        break;
+    case cheatsheetHeadings.ListGroup1:
+        selectedCode = ListGroupStatesCode;
+        break;
+    case cheatsheetHeadings.ListGroup2:
+        selectedCode = ListGroupFlushCode;
+        break;
+    case cheatsheetHeadings.ListGroup3:
+        selectedCode = ListGroupVariantsCode;
+        break;
+    case cheatsheetHeadings.Modal1:
+        selectedCode = ModalOverviewCode;
+        break;
+    case cheatsheetHeadings.Navbar1:
+        selectedCode = NavbarWithInputsCode;
+        break;
+    case cheatsheetHeadings.Navbar2:
+        selectedCode = NavbarWithImageCode;
+        break;
+    case cheatsheetHeadings.NavsAndTabs1:
+        selectedCode = BaseNavCode;
+        break;
+    case cheatsheetHeadings.NavsAndTabs2:
+        selectedCode = NavTabsCode;
+        break;
+    case cheatsheetHeadings.NavsAndTabs3:
+        selectedCode = NavPillsCode;
+        break;
+    case cheatsheetHeadings.Pagination1:
+        selectedCode = BasicPaginationCode;
+        break;
+    case cheatsheetHeadings.Pagination2:
+        selectedCode = PaginationWithIconsCode;
+        break;
+    case cheatsheetHeadings.Pagination3:
+        selectedCode = PaginationSizingCode;
+        break;
+    case cheatsheetHeadings.Pagination4:
+        selectedCode = PaginationStatesCode;
+        break;
+    case cheatsheetHeadings.Popovers1:
+        selectedCode = PopoverDirectionsCode;
+        break;
+    case cheatsheetHeadings.Popovers2:
+        selectedCode = DismissiblePopoverCode;
+        break;
+    case cheatsheetHeadings.Progress1:
+        selectedCode = BasicProgressBarCode;
+        break;
+    case cheatsheetHeadings.Progress2:
+        selectedCode = ProgressBarWithLabelsCode;
+        break;
+    case cheatsheetHeadings.Progress3:
+        selectedCode = ProgressBarVariantsCode;
+        break;
+    case cheatsheetHeadings.Progress4:
+        selectedCode = MultipleBarsCode;
+        break;
+    case cheatsheetHeadings.Progress5:
+        selectedCode = StripedProgressBarCode;
+        break;
+    case cheatsheetHeadings.Progress6:
+        selectedCode = AnimatedStripesCode;
+        break;
+    case cheatsheetHeadings.Scrollspy1:
+        selectedCode = ScrollspyOverviewCode;
+        break;
+    case cheatsheetHeadings.Spinners1:
+        selectedCode = BorderSpinnersCode;
+        break;
+    case cheatsheetHeadings.Spinners2:
+        selectedCode = GrowingSpinnersCode;
+        break;
+    case cheatsheetHeadings.Toast1:
+        selectedCode = ToastOverviewCode;
+        break;
+    case cheatsheetHeadings.Tooltips1:
+        selectedCode = TooltipsOverviewCode;
+        break;
+    default:
+        selectedCode = '<p>Coming Soon</p>';
+}
+---
+
+{showCode && 
+    <ul class="nav nav-tabs nav-tabs-preview-code" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link d-flex align-items-center active" id={`${prettyContent}PreviewTab`} data-bs-toggle="tab" data-bs-target={`#${prettyContent}PreviewTabPane`} type="button" role="tab" aria-controls={`${prettyContent}PreviewTabPane`} aria-selected="true"><Icon class="w-15-px me-2" name="bi:eye" />Preview</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link d-flex align-items-center" id={`${prettyContent}CodeTab`} data-bs-toggle="tab" data-bs-target={`#${prettyContent}CodeTabPane`} type="button" role="tab" aria-controls={`${prettyContent}CodeTabPane`} aria-selected="false"><Icon class="w-15-px me-2" name="bi:code-slash"/>HTML</button>
+        </li>
+    </ul>
+}
+<div class="tab-content">
+    <div class={`tab-pane fade show active ${showCode ? 'mt-3' : ''}`} id={`${prettyContent}PreviewTabPane`} role="tabpanel" aria-labelledby={`${prettyContent}PreviewTab`} tabindex="0">
+      { 
+        content === cheatsheetHeadings.Color1 ? <ExtendedColors /> :
+        content === cheatsheetHeadings.Color2 ? <ThemeColors /> :
+        content === cheatsheetHeadings.Color3 ? <AllColors /> :
+        content === cheatsheetHeadings.SASS1 ? <Importing shiki={shiki} slug={slug} /> :
+        content === cheatsheetHeadings.Typography1 ? <Headings /> :
+        content === cheatsheetHeadings.Typography2 ? <DisplayHeadings /> :
+        content === cheatsheetHeadings.Typography3 ? <Lead /> :
+        content === cheatsheetHeadings.Typography4 ? <InlineTextElements /> :
+        content === cheatsheetHeadings.Typography5 ? <Abbreviations /> :
+        content === cheatsheetHeadings.Typography6 ? <Blockquotes /> :
+        content === cheatsheetHeadings.Typography7 ? <NamingASource /> :
+        content === cheatsheetHeadings.Typography8 ? <UnstyledList /> :
+        content === cheatsheetHeadings.Typography9 ? <InlineList /> :
+        content === cheatsheetHeadings.Images1 ? <ResponsiveImages /> :
+        content === cheatsheetHeadings.Images2 ? <ThumbnailImages /> :
+        content === cheatsheetHeadings.Tables1 ? <Table /> :
+        content === cheatsheetHeadings.Tables2 ? <StripedRows /> :
+        content === cheatsheetHeadings.Tables3 ? <StripedColumns /> :
+        content === cheatsheetHeadings.Tables4 ? <TableVariants /> :
+        content === cheatsheetHeadings.Tables5 ? <ColoredBorder /> :
+        content === cheatsheetHeadings.Figures1 ? <FigureOverview /> :
+        content === cheatsheetHeadings.BasicForm1 ? <BasicFormOverview /> :
+        content === cheatsheetHeadings.DisabledForm1 ? <DisabledFormOverview /> :
+        content === cheatsheetHeadings.InputSizing1 ? <InputSizingOverview /> :
+        content === cheatsheetHeadings.InputGroup1 ? <InputGroupOverview /> :
+        content === cheatsheetHeadings.FloatingLabels1 ? <FloatingLabelsOverview /> :
+        content === cheatsheetHeadings.Validation1 ? <ValidationCustomStyles /> :
+        content === cheatsheetHeadings.Validation2 ? <ValidationBrowserDefaults /> :
+        content === cheatsheetHeadings.Validation3 ? <ValidationServerSide /> :
+        content === cheatsheetHeadings.Validation4 ? <ValidationTooltips /> :
+        content === cheatsheetHeadings.Accordion1 ? <AccordionOverview /> :
+        content === cheatsheetHeadings.Alerts1 ? <AlertVariants /> :
+        content === cheatsheetHeadings.Alerts2 ? <DismissibleAlert /> :
+        content === cheatsheetHeadings.Alerts3 ? <AlertWithContent /> :
+        content === cheatsheetHeadings.Badge1 ? <BasicBadge /> :
+        content === cheatsheetHeadings.Badge2 ? <RoundedPill /> :
+        content === cheatsheetHeadings.Breadcrumb1 ? <BreadcrumbOverview /> :
+        content === cheatsheetHeadings.Buttons1 ? <SolidButtons /> :
+        content === cheatsheetHeadings.Buttons2 ? <OutlineButtons /> :
+        content === cheatsheetHeadings.Buttons3 ? <ButtonSizing /> :
+        content === cheatsheetHeadings.ButtonGroup1 ? <BasicButtonGroup /> :
+        content === cheatsheetHeadings.ButtonGroup2 ? <MixedButtonGroup /> :
+        content === cheatsheetHeadings.ButtonGroup3 ? <OutlinedButtonGroup /> :
+        content === cheatsheetHeadings.ButtonGroup4 ? <ButtonGroupToolbar /> :
+        content === cheatsheetHeadings.ButtonGroup5 ? <VerticalButtonGroup /> :
+        content === cheatsheetHeadings.Card1 ? <ImageCap /> : 
+        content === cheatsheetHeadings.Card2 ? <HeaderAndFooter /> :
+        content === cheatsheetHeadings.Card3 ? <CardListGroup /> :
+        content === cheatsheetHeadings.Card4 ? <HorizontalImage /> :
+        content === cheatsheetHeadings.Carousel1 ? <CarouselOverview /> :
+        content === cheatsheetHeadings.CopyCodeSnippet1 ? <CopyCodeSnippetOverview /> : 
+        content === cheatsheetHeadings.CopyCodeSnippet2 ? <CopyCodeSnippetSizing /> :
+        content === cheatsheetHeadings.CopyCodeSnippet3 ? <CopyCodeSnippetCssVariables shiki={shiki} /> :
+        content === cheatsheetHeadings.CopyCodeSnippet4 ? <CopyCodeSnippetSassVariables shiki={shiki} /> :
+        content === cheatsheetHeadings.Dropdowns1 ? <DropdownButtonSizing /> :
+        content === cheatsheetHeadings.Dropdowns2 ? <SplitButton /> :
+        content === cheatsheetHeadings.Dropdowns3 ? <DropdownDirections /> :
+        content === cheatsheetHeadings.ListGroup1 ? <ListGroupStates /> :
+        content === cheatsheetHeadings.ListGroup2 ? <ListGroupFlush /> :
+        content === cheatsheetHeadings.ListGroup3 ? <ListGroupVariants /> :
+        content === cheatsheetHeadings.Modal1 ? <ModalOverview /> :
+        content === cheatsheetHeadings.Navbar1 ? <NavbarWithInputs /> :
+        content === cheatsheetHeadings.Navbar2 ? <NavbarWithImage /> :
+        content === cheatsheetHeadings.NavsAndTabs1 ? <BaseNav /> :
+        content === cheatsheetHeadings.NavsAndTabs2 ? <NavTabs /> :
+        content === cheatsheetHeadings.NavsAndTabs3 ? <NavPills /> :
+        content === cheatsheetHeadings.Pagination1 ? <BasicPagination /> :
+        content === cheatsheetHeadings.Pagination2 ? <PaginationWithIcons /> :
+        content === cheatsheetHeadings.Pagination3 ? <PaginationSizing /> :
+        content === cheatsheetHeadings.Pagination4 ? <PaginationStates /> :
+        content === cheatsheetHeadings.Popovers1 ? <PopoverDirections /> :
+        content === cheatsheetHeadings.Popovers2 ? <DismissiblePopover /> :
+        content === cheatsheetHeadings.Progress1 ? <BasicProgressBar /> :
+        content === cheatsheetHeadings.Progress2 ? <ProgressBarWithLabels /> :
+        content === cheatsheetHeadings.Progress3 ? <ProgressBarVariants /> :
+        content === cheatsheetHeadings.Progress4 ? <MultipleBars /> :
+        content === cheatsheetHeadings.Progress5 ? <StripedProgressBar /> :
+        content === cheatsheetHeadings.Progress6 ? <AnimatedStripes /> :
+        content === cheatsheetHeadings.Scrollspy1 ? <ScrollspyOverview /> :
+        content === cheatsheetHeadings.Spinners1 ? <BorderSpinners /> :
+        content === cheatsheetHeadings.Spinners2 ? <GrowingSpinners /> :
+        content === cheatsheetHeadings.Toast1 ? <ToastOverview /> :
+        content === cheatsheetHeadings.Tooltips1 ? <TooltipsOverview /> :
+        <div>Coming Soon</div>
+    }
+    </div>
+    {showCode && 
+        <div class="tab-pane fade mt-3" id={`${prettyContent}CodeTabPane`} role="tabpanel" aria-labelledby={`${prettyContent}CodeTab`} tabindex="0">
+            <Code theme={shiki} lang="js" code={`${selectedCode}`} />
+        </div>
+    }
+</div>

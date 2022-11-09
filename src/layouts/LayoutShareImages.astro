@@ -1,0 +1,149 @@
+---
+import LayoutBase from '@layouts/LayoutBase.astro';
+import Palette from '@components/share-images/Palette.astro';
+import ThemeToggle from 'bootstrap-pretty/components/astro/ThemeToggle.astro';
+import { SITE } from '@config';
+import '@styles/playwright-share-images.scss';
+import { Icon } from 'astro-icon';
+const iconComponent = Icon;
+const showPaletteSelector = false;
+const { fallback, slug, palette, title, description, tags, playwrightCategory } = Astro.props;
+let stylesheetBase =  SITE.cdnUrl;
+if (import.meta.env.MODE == 'development') {
+	stylesheetBase = 'http://127.0.0.1:8080';
+}
+---
+
+{playwrightCategory === 'palettes' ? <link rel="stylesheet" href={`${stylesheetBase}/dist/css/${slug}/${palette}.min.css`} /> : <link rel="stylesheet" href={`${stylesheetBase}/dist/css/palettes/${fallback}/${fallback}.min.css`} />}
+
+<LayoutBase title={title} description={description} showPaletteSelector={showPaletteSelector}>
+	<!-- Palettes pages -->
+	{
+		playwrightCategory === 'palettes' && (
+			<div id="playwrightPaletteLight" class="playwright-test d-none p-5 d-flex flex-column justify-content-around" style="height:630px;width:600px;">
+				<p class="text-primary display-1 text-center mb-0"><strong>{title}</strong></p>
+				<Palette />
+			</div>
+
+			<div id="playwrightPaletteDark" class="playwright-test d-none p-5 d-flex flex-column justify-content-around" style="height:630px;width:600px;">
+				<Palette />
+				<p class="text-primary display-1 text-center mb-0"><strong>{title}</strong></p>
+			</div>
+
+			<div id="playwrightPaletteCombined" class="playwright-test d-none" style="height:315px;width:600px;">
+				<div class="d-flex justify-content-between">
+					<img src={`/images/playwright/${slug}/${palette}-light.png`} alt={title} style="height:315px;width:300px;" />
+					<img src={`/images/playwright/${slug}/${palette}-dark.png`} alt={title} style="height:315px;width:300px;" />
+				</div>
+			</div>
+
+			<div id="playwrightPaletteLightOg" class="playwright-test d-none p-5 d-flex flex-column justify-content-around" style="height:630px;width:600px;">
+				<div>
+					<p class="text-primary display-1 text-center mb-0"><strong>{title}</strong></p>
+					<p class="h1 text-center mb-0"><strong>{SITE.prettyUrl}</strong></p>
+				</div>
+				<Palette />
+			</div>
+
+			<div id="playwrightPaletteDarkOg" class="playwright-test d-none p-5 d-flex flex-column justify-content-around" style="height:630px;width:600px;">
+				<Palette />
+				<div>
+					<p class="text-primary display-1 text-center mb-0"><strong>{title}</strong></p>
+					<p class="h1 text-center mb-0"><strong>{SITE.prettyUrl}</strong></p>
+				</div>
+			</div>
+
+			<div id="playwrightPaletteCombinedOg" class="playwright-test d-none" style="height:630px;width:1200px;">
+				<div class="d-flex justify-content-between">
+					<img src={`/images/playwright/${slug}/${palette}-light-og.png`} alt={title} style="height:630px;width:600px;" />
+					<img src={`/images/playwright/${slug}/${palette}-dark-og.png`} alt={title} style="height:630px;width:600px;" />
+				</div>
+			</div>
+		)
+	}
+
+	<!-- Standalone pages -->
+	{
+		playwrightCategory === 'standalone' && (
+			<div id="playwrightStandaloneOg" class="playwright-test d-none p-5 d-flex flex-column align-items-center justify-content-center" style="height:630px;width:1200px;">
+				<p class="display-1 text-center mb-0"><strong>Bootstrap <span class="font-handwriting text-primary">Pretty</span></strong></p>
+				{slug !== 'home' ? <p class="display-3 text-center mb-5"><strong>{title}</strong></p> : null}
+				<p class="h1 text-center mb-0"><strong>{SITE.prettyUrl}</strong></p>
+			</div>
+		)
+	}
+
+	<!-- Palette Tag pages -->
+	{
+		playwrightCategory === 'palette tags' && (
+			<div id="playwrightPaletteTagOg" class="playwright-test d-none p-5 d-flex flex-column align-items-center justify-content-center" style="height:630px;width:1200px;">
+				<p class="display-1 text-center mb-0"><strong>Bootstrap <span class="font-handwriting text-primary">Pretty</span></strong></p>
+				<p class="display-3 text-center mb-5"><strong>{title}</strong></p>
+				<p class="h1 text-center mb-0"><strong>{SITE.prettyUrl}</strong></p>
+			</div>
+		)
+	}
+
+	<!-- Social Icons -->
+	{
+		playwrightCategory === 'icons' && (
+			<div id="playwrightIconSq" class="playwright-test d-none p-5 d-flex flex-column align-items-center justify-content-center" style="height:630px;width:630px;">
+				<p class="text-center mb-0"><strong><span style="font-size: 20rem; vertical-align: middle; margin-left: -2rem">B</span><span class="font-handwriting text-primary" style="font-size: 15rem; vertical-align: middle;">P</span></strong></p>
+			</div>
+		)
+	}
+
+	<div class="d-flex flex-row mt-3">
+		<ThemeToggle iconComponent={iconComponent} />
+		{
+			playwrightCategory === 'palettes' && (
+				<button class="btn btn-primary mx-1" data-bp-playwright-test="playwrightPaletteLight">Palette Light</button>
+				<button class="btn btn-primary mx-1" data-bp-playwright-test="playwrightPaletteDark">Palette Dark</button>
+				<button class="btn btn-primary mx-1" data-bp-playwright-test="playwrightPaletteCombined">Palette Combined</button>
+				<button class="btn btn-primary mx-1" data-bp-playwright-test="playwrightPaletteLightOg">Palette Light Og</button>
+				<button class="btn btn-primary mx-1" data-bp-playwright-test="playwrightPaletteDarkOg">Palette Dark Og</button>
+				<button class="btn btn-primary mx-1" data-bp-playwright-test="playwrightPaletteCombinedOg">Palette Combined Og</button>
+			)
+		}
+		{
+			playwrightCategory === 'standalone' && (
+				<button class="btn btn-primary mx-1" data-bp-playwright-test="playwrightStandaloneOg">Show {title}</button>
+			)
+		}
+		{
+			playwrightCategory === 'palette tags' && (
+				<button class="btn btn-primary mx-1" data-bp-playwright-test="playwrightPaletteTagOg">Show {title}</button>
+			)
+		}
+		{
+			playwrightCategory === 'icons' && (
+				<button class="btn btn-primary mx-1" data-bp-playwright-test="playwrightIconSq">Show {title}</button>
+			)
+		}
+	</div>
+
+	<script>
+		const htmlTheme = document.querySelector('html');
+		const testToggleBtns = document.querySelectorAll('[data-bp-playwright-test]');
+
+		for (const i of testToggleBtns) {
+			const tests = document.querySelectorAll('.playwright-test');
+
+			i.addEventListener('click', () => {
+				if (i.classList.contains('active')) {
+					i.classList.remove('active');
+				} else {
+					i.classList.add('active');
+				}
+
+				for (const test of tests) {
+					if (i.getAttribute('data-bp-playwright-test') == test.id) {
+						test.classList.remove('d-none');
+					} else {
+						test.classList.add('d-none');
+					}
+				}
+			});
+		}
+	</script>
+</LayoutBase>

@@ -1,0 +1,22 @@
+---
+
+---
+
+<script is:inline>
+    (() => {
+        const paletteSheets = document.querySelectorAll('[data-bp-palette]');
+        const paletteStorage = localStorage.getItem('palette');
+
+        if (paletteStorage) {
+            for (const i of paletteSheets) {
+                if (i.getAttribute('data-bp-palette') == paletteStorage) {
+                    i.removeAttribute('disabled');
+                } else {
+                    i.setAttribute('disabled', true);
+                }
+            }
+        } else {
+            paletteSheets[0].removeAttribute('disabled');
+        }
+    })();
+</script>

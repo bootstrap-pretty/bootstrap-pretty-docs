@@ -1,0 +1,19 @@
+---
+import LayoutRainbow from '@layouts/LayoutRainbow.astro';
+import PALETTES from 'bootstrap-pretty/palettes.json';
+import { SITE } from '@config';
+import '@styles/bootstrap-pretty.scss';
+const { title, description } = Astro.props;
+const showPaletteSelector = true;
+let stylesheetBase = SITE.cdnUrl;
+if (import.meta.env.MODE == 'development') {
+	stylesheetBase = 'http://127.0.0.1:8080';
+}
+---
+
+{PALETTES.map(palette =>
+	<link rel="stylesheet" data-bp-palette={palette.title} href={`${stylesheetBase}/dist/css/${palette.slug}/${palette.palette}.min.css`} disabled />
+)}
+<LayoutRainbow title={title} description={description} showPaletteSelector={showPaletteSelector}>
+	<slot />
+</LayoutRainbow>

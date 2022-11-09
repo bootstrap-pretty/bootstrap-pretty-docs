@@ -1,0 +1,22 @@
+@import "font";
+@import "rainbow-border";
+
+header {
+    // Set z-index so the theme selector dropdown doesn't go behind sticky buttons in the layout
+    z-index: 1021;
+}
+
+.nav-tabs-preview-code {
+    --bs-nav-tabs-link-active-color: var(--bs-primary);
+    --bs-nav-link-color: var(--bs-body-color);
+    border: unset;
+
+    .nav-link {
+        border: 0;
+        border-bottom: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color);
+
+        &.active {
+            border-bottom: var(--bs-nav-tabs-border-width) solid var(--bs-primary);
+        }
+    }
+}

@@ -1,0 +1,69 @@
+---
+import LayoutRainbow from '@layouts/LayoutRainbow.astro';
+import HeadingSection from '@components/cheatsheet/HeadingSection.astro';
+import CategoryNavigation from '@components/cheatsheet/CategoryNavigation.astro';
+import { Icon } from 'astro-icon';
+import '@styles/bootstrap-pretty.scss';
+import { SITE, THEME_SECTIONS } from '@config';
+const { slug, palette, title, description, tags, shiki } = Astro.props;
+const showPaletteSelector = false;
+let stylesheetBase =  SITE.cdnUrl;;
+if (import.meta.env.MODE == 'development') {
+	stylesheetBase = 'http://127.0.0.1:8080';
+}
+---
+
+<link rel="stylesheet" href={`${stylesheetBase}/dist/css/${slug}/${palette}.min.css`} />
+<LayoutRainbow title={title} description={description} showPaletteSelector={showPaletteSelector} shiki={shiki}>
+	<button class="btn btn-link bg-body text-decoration-none border border-primary border-top-0 border-start-0 border-end-0 py-2 d-md-none sticky-top rounded-0 w-100" type="button" data-bs-toggle="offcanvas" data-bs-target="#cheatsheetNav" aria-controls="cheatsheetNav">On this page<Icon class="w-15-px ms-2" name="bi:chevron-expand" /></button>
+	<section class="container-xxl">
+		<div class="row">
+			<article class="col-md-8 col-lg-9 col-xl-10 order-2 order-md-1 px-3 px-md-5 ps-xxl-0" data-bs-spy="scroll" data-bs-target="#cheatsheetNav" data-bs-smooth-scroll="true" tabindex="0">
+				<h1 class="text-center mb-0 py-5">{title}</h1>
+				{
+					THEME_SECTIONS.filter(section => section !== "Utilities" && section !== "Helpers").map((section, index) => (
+						<h2 id={section.toLowerCase()} class={`sticky-xl-top cheatsheet-page-heading col-xl-3 col-xxl-2 mb-0 h3 ${index === 0 ? 'mt-3' : ''}`}><strong>{section}</strong></h2>
+						<HeadingSection section={section} shiki={shiki} slug={slug} />
+					))
+				}
+			</article>
+			<aside class="col-md-4 col-lg-3 col-xl-2 order-1 order-md-2 p-0">
+				<div id="cheatsheetNav" class="offcanvas-md offcanvas-end sticky-md-top cheatsheet-page-heading overflow-y-scroll vh-100 border-start px-md-4 pt-md-3" tabindex="-1" aria-labelledby="cheatsheetNavLabel">
+					<div class="offcanvas-header border-bottom">
+						<h5 class="offcanvas-title" id="cheatsheetNavLabel">Browse Cheatsheet</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#cheatsheetNav" aria-label="Close"></button>
+					</div>
+					<div class="offcanvas-body">
+						<nav>
+							<p class="lead border-bottom d-none d-md-block">On this page</p>
+							<ul class="list-unstyled">
+								{
+									THEME_SECTIONS.map(section => (
+										<li class="mb-3">
+											<p class="mb-1 d-flex align-items-center">
+												{
+													section == "Customize" ? <Icon class="w-15-px me-2" name="bi:palette2" style="color:var(--bs-red)" /> :
+													section == "Contents" ? <Icon class="w-15-px me-2" name="bi:body-text" style="color:var(--bs-orange)" /> :
+													section == "Forms" ? <Icon class="w-15-px me-2" name="bi:ui-radios" style="color:var(--bs-yellow)" /> :
+													section == "Components" ? <Icon class="w-15-px me-2" name="bi:menu-button" style="color:var(--bs-blue)" /> :
+													section == "Helpers" ? <Icon class="w-15-px me-2" name="bi:magic" style="color:var(--bs-cyan)" /> :
+													section == "Utilities" ? <Icon class="w-15-px me-2" name="bi:tools" style="color:var(--bs-purple)" /> :
+													<Icon class="w-15-px me-2" name="bi:gear" />
+												}
+												<strong>{section}</strong>
+											</p>
+											<CategoryNavigation section={section} />
+										</li>
+									))
+								}
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</aside>
+		</div>
+	</section>
+	<script>
+		import '@scripts/anchor';
+	</script>
+</LayoutRainbow>

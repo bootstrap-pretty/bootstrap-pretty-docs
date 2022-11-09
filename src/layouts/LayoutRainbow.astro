@@ -1,0 +1,20 @@
+---
+import LayoutBase from '@layouts/LayoutBase.astro';
+import Header from "@components/Header.astro";
+import RainbowBorder from "@components/RainbowBorder.astro";
+import Footer from "@components/Footer.astro";
+
+const { title, description, showPaletteSelector, shiki } = Astro.props;
+---
+
+<LayoutBase title={title} description={description} showPaletteSelector={showPaletteSelector} shiki={shiki}>
+	<RainbowBorder />
+	<Header showPaletteSelector={showPaletteSelector} />
+	<main class="flex-grow-1">
+		<div class="alert alert-warning m-3" role="alert">
+			<p class="mb-0 text-center"><strong>Heads up! </strong>Bootstrap Pretty is in the early stages of development and may not be suitable for production environments.</p>
+		</div>
+		<slot />
+	</main>
+	<Footer />
+</LayoutBase>

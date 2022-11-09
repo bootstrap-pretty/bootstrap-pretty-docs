@@ -1,0 +1,13 @@
+---
+import { THEME_COLORS, ALL_COLORS, COLORS } from '@config';
+---
+
+<div class="row">
+    {
+        ALL_COLORS.map(color => (
+            <div class="col-6 col-sm-3">
+                <p class={`text-bg-${color.toLowerCase()} d-flex align-items-center justify-content-center h-100-px border rounded`}>{color}</p>
+            </div>
+        ))
+    }
+</div>

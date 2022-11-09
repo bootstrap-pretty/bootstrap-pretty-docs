@@ -1,0 +1,97 @@
+---
+import { THEME_HEADINGS } from '@config';
+import { cheatsheetHeadings } from '@config';
+import { Icon } from 'astro-icon';
+import Color from '@components/cheatsheet/customize/color/Color.astro';
+import Sass from '@components/cheatsheet/customize/sass/Sass.astro';
+import Typography from '@components/cheatsheet/contents/typography/Typography.astro';
+import Images from '@components/cheatsheet/contents/images/Images.astro';
+import Tables from '@components/cheatsheet/contents/tables/Tables.astro';
+import Figures from '@components/cheatsheet/contents/figures/Figures.astro';
+import BasicForm from '@components/cheatsheet/forms/basic-form/BasicForm.astro';
+import DisabledForm from '@components/cheatsheet/forms/disabled-form/DisabledForm.astro';
+import InputSizing from '@components/cheatsheet/forms/sizing/InputSizing.astro';
+import InputGroup from '@components/cheatsheet/forms/input-group/InputGroup.astro';
+import FloatingLabels from '@components/cheatsheet/forms/floating-labels/FloatingLabels.astro';
+import Validation from '@components/cheatsheet/forms/validation/Validation.astro';
+import Accordion from '@components/cheatsheet/components/accordion/Accordion.astro';
+import Alerts from '@components/cheatsheet/components/alerts/Alerts.astro';
+import Badge from '@components/cheatsheet/components/badge/Badge.astro';
+import Breadcrumb from '@components/cheatsheet/components/breadcrumb/Breadcrumb.astro';
+import Buttons from '@components/cheatsheet/components/buttons/Buttons.astro';
+import ButtonGroup from '@components/cheatsheet/components/button-group/ButtonGroup.astro';
+import Card from '@components/cheatsheet/components/card/Card.astro';
+import Carousel from '@components/cheatsheet/components/carousel/Carousel.astro';
+import CopyCodeSnippet from '@components/cheatsheet/components/copy-code-snippet/CopyCodeSnippet.astro';
+import Dropdowns from '@components/cheatsheet/components/dropdowns/Dropdowns.astro';
+import ListGroup from '@components/cheatsheet/components/list-group/ListGroup.astro';
+import Modal from '@components/cheatsheet/components/modal/Modal.astro';
+import Navbar from '@components/cheatsheet/components/navbar/Navbar.astro';
+import NavsAndTabs from '@components/cheatsheet/components/navs-and-tabs/NavsAndTabs.astro';
+import Pagination from '@components/cheatsheet/components/pagination/Pagination.astro';
+import Popovers from '@components/cheatsheet/components/popovers/Popovers.astro';
+import Progress from '@components/cheatsheet/components/progress/Progress.astro';
+import Scrollspy from '@components/cheatsheet/components/scrollspy/Scrollspy.astro';
+import Spinners from '@components/cheatsheet/components/spinners/Spinners.astro';
+import Toast from '@components/cheatsheet/components/toast/Toast.astro';
+import Tooltips from '@components/cheatsheet/components/tooltips/Tooltips.astro';
+
+const { section, shiki, slug } = Astro.props;
+---
+
+{
+    THEME_HEADINGS.filter(heading => heading.section === section && heading.contents).map(heading => (
+        <section id={heading.title.replaceAll(' ', '-').toLowerCase()} class="row">
+            <aside class="col-xl-3 col-xxl-2 mb-3">
+                <div class="d-flex d-xl-inline-block sticky-xl-top align-items-center cheatsheet-section-heading">
+                    <h3 class="h4 mb-0 m2-xl-0 mb-xl-2 me-sm-2 me-xl-0">{heading.title}</h3>
+                    {heading.bootstrapDocs ? 
+                        <a class="d-flex align-items-center" href={heading.bootstrapDocs} target="_blank" rel="noreferrer"><small class="d-none d-sm-inline-block">Bootstrap Docs</small><Icon class="w-15-px ms-2" name="bi:box-arrow-up-right" /></a> :
+                        <span class="badge text-bg-success rounded-pill">Bootstrap Pretty</span>
+                    }
+                </div>
+            </aside>
+            <div class="col-xl-9 col-xxl-10 ps-xl-5">
+                {
+                    heading.title == cheatsheetHeadings.Color ? <Color shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.SASS ? <Sass shiki={shiki} slug={slug} contents={heading.contents} /> : 
+
+                    heading.title == cheatsheetHeadings.Typography ? <Typography shiki={shiki} contents={heading.contents} /> : 
+                    heading.title == cheatsheetHeadings.Images ? <Images shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.Tables ? <Tables shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.Figures ? <Figures shiki={shiki} contents={heading.contents} /> :
+
+                    heading.title == cheatsheetHeadings.BasicForm ? <BasicForm shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.DisabledForm ? <DisabledForm shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.InputSizing ? <InputSizing shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.InputGroup ? <InputGroup shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.FloatingLabels ? <FloatingLabels shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.Validation ? <Validation shiki={shiki} contents={heading.contents} /> :
+
+                    heading.title == cheatsheetHeadings.Accordion ? <Accordion shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.Alerts ? <Alerts shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.Badge ? <Badge shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.Breadcrumb ? <Breadcrumb shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.Buttons ? <Buttons shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.ButtonGroup ? <ButtonGroup shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.Card ? <Card shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.Carousel ? <Carousel shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.CopyCodeSnippet ? <CopyCodeSnippet shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.Dropdowns ? <Dropdowns shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.ListGroup ? <ListGroup shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.Modal ? <Modal shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.Navbar ? <Navbar shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.NavsAndTabs ? <NavsAndTabs shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.Pagination ? <Pagination shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.Popovers ? <Popovers shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.Progress ? <Progress shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.Scrollspy ? <Scrollspy shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.Spinners ? <Spinners shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.Toast ? <Toast shiki={shiki} contents={heading.contents} /> :
+                    heading.title == cheatsheetHeadings.Tooltips ? <Tooltips shiki={shiki} contents={heading.contents} /> :
+                    <div>Coming Soon</div>
+                }
+            </div>
+        </section>
+    ))
+}

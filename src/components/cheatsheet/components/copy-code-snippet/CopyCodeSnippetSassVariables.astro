@@ -1,0 +1,27 @@
+---
+import { Code } from 'astro/components';
+const { shiki } = Astro.props;
+---
+
+<Code theme={shiki} lang="scss" code={
+`$copy-code-snippet-font-family:         $font-family-code;
+$copy-code-snippet-line-height:         $input-btn-line-height;
+$copy-code-snippet-font-weight:         $font-weight-normal;
+
+$copy-code-snippet-border-width:        $input-btn-border-width;
+$copy-code-snippet-border-color:        var(--#{$prefix}border-color);
+
+$copy-code-snippet-padding-start:       $input-btn-padding-x;
+$copy-code-snippet-padding-start-sm:    $input-btn-padding-x-sm;
+$copy-code-snippet-padding-start-lg:    $input-btn-padding-x-lg;
+
+$copy-code-snippet-font-size:           $input-btn-font-size;
+$copy-code-snippet-font-size-sm:        $input-btn-font-size-sm;
+$copy-code-snippet-font-size-lg:        $input-btn-font-size-lg;
+
+$copy-code-snippet-border-radius:       $border-radius;
+$copy-code-snippet-border-radius-sm:    $border-radius-sm;
+$copy-code-snippet-border-radius-lg:    $border-radius-lg;
+
+$copy-code-snippet-bg:                  var(--#{$prefix}tertiary-bg);
+$copy-code-snippet-color:               var(--#{$prefix}tertiary-bg-contrast);`} />

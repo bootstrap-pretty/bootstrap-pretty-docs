@@ -1,0 +1,25 @@
+---
+const { palettes } = Astro.props;
+---
+
+<div class="row">
+    {palettes.map((palette: { slug: string; title: string; palette: string; description: string; tags: string[]; }) =>
+        <div class="col-sm-6 col-lg-4 mb-3">
+            <div class="card h-100">
+                <a href={`/${palette.slug}`} title={palette.title}>
+                    <img class="card-img-top border-bottom" src={`/images/playwright/${palette.slug}/${palette.palette}.png`} alt={palette.title}>
+                </a>
+                <div class="card-body">
+                    <p class="card-title lead mx-1">{palette.title}</p>
+                    <p class="card-text mx-1">{palette.description}</p>
+                    <ul class="list-inline">
+                        {palette.tags.map((tag: string) => (
+                            <li class="list-inline-item m-1"><a class="btn btn-sm btn-primary" href={`/palettes/tags/${tag}`}>#{tag}</a></li>
+                        ))}
+                    </ul>
+                    <a class="btn btn-link" href={`/${palette.slug}`}>View</a>
+                </div>
+            </div>
+        </div>
+    )}
+</div>

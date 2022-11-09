@@ -1,0 +1,12 @@
+---
+import { NAVIGATION_LINKS } from '@config';
+const url = new URL(Astro.request.url);
+---
+
+{
+    NAVIGATION_LINKS.filter(link => link.showInNav).map((link, index) => (
+        <li class="nav-item">
+            <a class={`nav-link ${index === 0 ? "ps-0" : ""} ${url.pathname.includes(link.slug) ? "active" : ""}`} href={`/${link.slug}`} aria-current={url.pathname.includes(link.slug) ? "page" : false}>{link.title}</a>
+        </li>
+    ))
+}

@@ -1,0 +1,22 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageHeader from "@components/PageHeader.astro";
+import { PALETTE_TAGS } from '@config';
+const title = 'Palette tags';
+const description = 'A list of tags from all Bootstrap Pretty palettes.';
+---
+
+<Layout title={title} description={description}>
+    <section class="container-xxl my-4">
+        <PageHeader title={title} description={description} />
+        <ul class="list-inline">
+            {
+                PALETTE_TAGS.length > 0 && PALETTE_TAGS.map(tag => 
+                    <li class="list-inline-item">
+                        <a class="link-underline-hover" href={`/palettes/tags/${tag}`} title={tag}>#{tag}</a>
+                    </li>
+                )
+            }
+        </ul>
+    </section>
+</Layout>

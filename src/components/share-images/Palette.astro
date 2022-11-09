@@ -1,0 +1,14 @@
+---
+import { THEME_COLORS, ALL_COLORS } from '@config';
+const filteredColors = ALL_COLORS.filter(color => color !== "Teal" && color !== "Gray" && color !== "Indigo");
+---
+
+<div class="row text-center mt-4">
+    {
+        filteredColors.map(color => (
+            <div class="col-3 mb-4">
+                <div class={`text-bg-${color.toLowerCase()} ratio ratio-1x1 rounded`}></div>
+            </div>
+        ))
+    }
+</div>

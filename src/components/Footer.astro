@@ -1,0 +1,15 @@
+---
+import NavigationLinks from '@components/NavigationLinks.astro';
+import { SITE } from '@config';
+---
+
+<footer class="flex-shrink-0 text-center rounded-4 mb-n2 border text-bg-tertiary-bg">
+    <div class="container-xxl">
+        <p class="my-3">Copyright &copy; {new Date().getFullYear()} - {SITE.title}</p>
+        <!-- <nav class="navbar navbar-expand">
+            <ul class="navbar-nav mx-auto mx-md-end">
+                <NavigationLinks />
+            </ul>
+        </nav> -->
+    </div>
+</footer>

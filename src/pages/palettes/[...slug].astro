@@ -1,0 +1,25 @@
+---
+import LayoutCheatsheet from '@layouts/LayoutCheatsheet.astro';
+import { PALETTES_ROOT } from '@config';
+import '@styles/cheatsheet.scss';
+
+export async function getStaticPaths() {
+	return PALETTES_ROOT.map(({ slug = '', palette = '', title = '', description = '', tags = '', shiki = '' }) => {
+		return {
+			params: { slug },
+			props: { slug, palette, title, description, tags, shiki }
+		};
+	});
+}
+
+const {slug, palette, title, description, tags, shiki } = Astro.props;
+---
+
+<LayoutCheatsheet 
+	slug={`palettes/${slug}`}
+	palette={palette} 
+	shiki={shiki}
+    title={title} 
+    description={description} 
+    tags={tags}>
+</LayoutCheatsheet>

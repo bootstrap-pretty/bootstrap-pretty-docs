@@ -1,0 +1,18 @@
+---
+import { THEME_HEADINGS } from '@config';
+import { Icon } from 'astro-icon';
+const { section } = Astro.props;
+---
+
+<ul class="list-unstyled">
+    {
+        THEME_HEADINGS.filter(heading => heading.section === section).map(heading => (
+            <li class="mb-1">
+                {heading.contents ? 
+                    <a class={`text-decoration-none text-reset ${heading.bootstrapPretty ? "d-flex align-items-center" : "ms-4"}`} href={`#${heading.title.replaceAll(' ', '-').toLowerCase()}`}>{heading.bootstrapPretty ? <Icon class="w-15-px me-2 text-success" name="bi:stars" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bootstrap Pretty" /> : null}<small>{heading.title}</small></a> : 
+                    <a class="text-decoration-none text-reset ms-4 mb-1" href={heading.bootstrapDocs} target="_blank" rel="noreferrer"><small>{heading.title}</small></a>
+                }
+            </li>
+        ))
+    }
+</ul>

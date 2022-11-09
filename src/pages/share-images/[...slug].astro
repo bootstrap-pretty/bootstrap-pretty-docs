@@ -1,0 +1,25 @@
+---
+import LayoutShareImages from '@layouts/LayoutShareImages.astro';
+import { ALL_SLUGS } from '@config';
+const fallback = 'dracula';
+export async function getStaticPaths() {
+	return ALL_SLUGS.map(({ slug, palette = '', title, description = '', tags = '', playwrightCategory }) => {
+		return {
+			params: { slug },
+			props: { slug, palette, title, description, tags, playwrightCategory }
+		};
+	});
+}
+
+const { slug, palette, title, description, tags, playwrightCategory } = Astro.props;
+---
+
+<LayoutShareImages
+	fallback={fallback}
+	slug={slug}
+	palette={palette} 
+    title={title} 
+    description={description} 
+    tags={tags}
+	playwrightCategory={playwrightCategory}>
+</LayoutShareImages>

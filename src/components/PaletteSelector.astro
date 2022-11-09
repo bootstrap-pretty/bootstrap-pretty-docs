@@ -1,0 +1,14 @@
+---
+import PALETTES from 'bootstrap-pretty/palettes.json';
+const featuredPalettes = PALETTES.filter(x => x.tags.includes("featured"));
+---
+
+<select id="paletteSelector" class="form-select me-3" aria-label="Palette Selector">
+    {featuredPalettes.map(palette =>
+        <option value={palette.title}>{palette.title}</option>
+    )}
+</select>
+
+<script>
+    import "../scripts/body-bootstrap-pretty-palette-selector";
+</script>

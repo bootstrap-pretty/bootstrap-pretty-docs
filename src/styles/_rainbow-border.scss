@@ -1,0 +1,66 @@
+body {
+    padding: 1rem .5rem 1.5rem .5rem;
+}
+
+header, footer {
+    width: calc(100% + .5rem);
+    z-index: 1;
+    margin-left: -.25rem;
+}
+
+[class*="rainbow-border-"] {
+    --bp-rainbow-border-forward: linear-gradient(var(--bp-rainbow-border-degrees), var(--bs-red) 12.5%, var(--bs-orange) 12.5% 25%, var(--bs-yellow) 25% 37.5%, var(--bs-green) 37.5% 50%, var(--bs-cyan) 50% 62.5%, var(--bs-blue) 62.5% 75%, var(--bs-purple) 75% 87.5%, var(--bs-pink) 87.5% 100%);
+    --bp-rainbow-border-backward: linear-gradient(var(--bp-rainbow-border-degrees), var(--bs-pink) 12.5%, var(--bs-purple) 12.5% 25%, var(--bs-blue) 25% 37.5%, var(--bs-cyan) 37.5% 50%, var(--bs-green) 50% 62.5%, var(--bs-yellow) 62.5% 75%, var(--bs-orange) 75% 87.5%, var(--bs-red) 87.5% 100%);
+}
+
+.rainbow-border-top,
+.rainbow-border-bottom {
+    --bp-rainbow-border-degrees: 90deg;
+    height: 1rem;
+	width: 100%;
+}
+
+.rainbow-border-top {
+    height: 1rem;
+}
+
+.rainbow-border-bottom {
+    height: 1.5rem;
+}
+
+.rainbow-border-start,
+.rainbow-border-end {
+    --bp-rainbow-border-degrees: 0deg;
+	height: 100%;
+    width: .5rem;
+}
+
+.rainbow-border-top,
+.rainbow-border-end {
+	background: var(--bp-rainbow-border-forward);
+}
+
+.rainbow-border-start,
+.rainbow-border-bottom {
+	background: var(--bp-rainbow-border-backward);
+}
+
+@media (min-width: 576px) {
+    body {
+        padding: 1.5rem 1rem 1.5rem 1rem;
+    }
+    
+    header, footer {
+        width: calc(100% + .5rem);
+        margin-left: -.25rem;
+    }
+    
+    .rainbow-border-top {
+        height: 1.5rem;
+    }
+    
+    .rainbow-border-start,
+    .rainbow-border-end {
+        width: 1rem;
+    }
+}

@@ -1,0 +1,17 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PalettePreviewList from '@components/PalettePreviewList.astro';
+import PALETTES from 'bootstrap-pretty/palettes.json';
+import { NAVIGATION_LINKS, getPropertyBySlug } from '@config';
+import PageHeader from "@components/PageHeader.astro";
+
+const title = getPropertyBySlug(NAVIGATION_LINKS, 'palettes', 'title');
+const description = getPropertyBySlug(NAVIGATION_LINKS, 'palettes', 'description');
+---
+
+<Layout title={title} description={description}>
+	<section class="container-xxl my-4">
+		<PageHeader title={title} description={description} />
+		<PalettePreviewList palettes={PALETTES} />
+	</section>
+</Layout>

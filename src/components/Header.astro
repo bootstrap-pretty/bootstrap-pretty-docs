@@ -1,0 +1,33 @@
+---
+import NavigationLinks from '@components/NavigationLinks.astro';
+import { SITE } from '@config';
+import { Icon } from 'astro-icon';
+import ThemeToggle from 'bootstrap-pretty/components/astro/ThemeToggle.astro';
+import PaletteSelector from '@components/PaletteSelector.astro';
+const iconComponent = Icon;
+const { showPaletteSelector } = Astro.props;
+---
+
+<header class="py-3 rounded-4 mt-n2 border text-bg-tertiary-bg">
+    <nav class="navbar navbar-expand justify-content-between container-xxl px-3">
+        <div class="d-flex">
+            <a class="navbar-brand" href="/">
+                Bootstrap <span class="font-handwriting text-primary">Pretty</span>
+            </a>
+            <!-- <div>
+                <ul class="navbar-nav">
+                    <NavigationLinks />
+                </ul>
+            </div> -->
+        </div>
+        <div class="d-flex align-items-center">
+            <a href={SITE.gitHubUrl} target="_blank" rel="noreferrer" title="Visit Bootstrap Pretty on GitHub"><Icon class="w-25-px me-4" name="bi:github" /></a>
+            {
+                showPaletteSelector && (
+                    <PaletteSelector />
+                )
+            }
+            <ThemeToggle iconComponent={iconComponent} />
+        </div>
+    </nav>
+</header>

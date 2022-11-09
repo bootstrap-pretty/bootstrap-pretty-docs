@@ -1,0 +1,37 @@
+{
+  "name": "bootstrap-pretty-docs",
+  "packageManager": "yarn@3.2.4",
+  "type": "module",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "description": "Pretty and flexible themes for Bootstrap 5.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bootstrap-pretty/bootstrap-pretty-docs.git"
+  },
+  "author": "Bootstrap Pretty (https://bootstrappretty.dev)",
+  "bugs": {
+    "url": "https://github.com/bootstrap-pretty/bootstrap-pretty-docs/issues"
+  },
+  "homepage": "https://github.com/bootstrap-pretty/bootstrap-pretty-docs#readme",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^1.0.0",
+    "@popperjs/core": "^2.11.6",
+    "anchor-js": "^5.0.0",
+    "astro": "^1.6.0",
+    "astro-icon": "^0.8.0",
+    "bootstrap-pretty": "0.2.0",
+    "clipboard": "^2.0.11",
+    "sass": "^1.55.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.28.1"
+  }
+}

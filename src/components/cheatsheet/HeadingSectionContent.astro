@@ -1,0 +1,17 @@
+---
+import PreviewCodeTab from "@components/cheatsheet/PreviewCodeTab.astro";
+const { shiki, contents, slug } = Astro.props;
+---
+
+{
+    contents.map((content: { title: string, bootstrapPretty: string }) => (
+        <div>
+            <h4 id={content.title.replaceAll(' ', '-').toLowerCase()} class="mb-3 ms-4 ms-md-0 anchored">{content.title}</h4>
+            {content.bootstrapPretty ?
+                <span class="badge text-bg-success rounded-pill mb-3">Bootstrap Pretty</span> : null
+            }
+            <PreviewCodeTab shiki={shiki} content={content} slug={slug} />
+        </div>
+        <hr class="my-5" />
+    ))
+}

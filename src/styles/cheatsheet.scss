@@ -1,0 +1,42 @@
+.cheatsheet-page-heading {
+    scroll-margin-top: 1rem;
+    display: inline-block;
+}
+
+.cheatsheet-section-heading {
+    top: 3rem !important;
+    scroll-margin-top: 3.5rem;
+    z-index: 0;
+}
+
+h2.cheatsheet-page-heading {
+    top: 1rem !important;
+    background: var(--bs-body-bg);
+
+    &:before {
+        background: var(--bs-body-bg);
+        position: absolute;
+        top: -1rem;
+        left: 0;
+        content: '';
+        height: 1rem;
+        width: 100%;
+    }
+}
+
+#cheatsheetNav {
+    a:hover, a.active {
+        text-decoration: underline !important;
+    }
+}
+
+@media (min-width: 768px) {
+    #cheatsheetNav {
+        z-index: 0;
+        width: 100%;
+
+        nav {
+            width: 100%;
+        }
+    }
+}

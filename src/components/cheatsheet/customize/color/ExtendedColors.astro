@@ -1,0 +1,38 @@
+---
+import { THEME_COLORS, ALL_COLORS, COLORS } from '@config';
+---
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="col-4" scope="col">Description</th>
+                <th class="col-4" scope="col">Swatch</th>
+                <th class="col-4" scope="col">Variables</th>
+            </tr>
+        </thead>
+        <tbody>
+            {
+                COLORS.map(color => (
+                    color.variants.map((variant, index) => (
+                        <tr>
+                            {index === 0 && <td rowspan={color.variants.length}>{color.title}</td>}
+                            <td>
+                                <div class={`${variant.class} d-flex align-items-center justify-content-center h-50-px border rounded`}>{variant.title}</div>
+                            </td>
+                            <td>
+                                <ul class="list-unstyled mb-0">
+                                    {
+                                        variant.variables.map(variable => (
+                                            <li>--bs-{variable}</li>
+                                        ))
+                                    }
+                                </ul>
+                            </td>
+                        </tr>
+                    ))
+                ))
+            }
+        </tbody>
+    </table>
+</div>
