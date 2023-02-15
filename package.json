@@ -27,7 +27,7 @@
     "anchor-js": "^5.0.0",
     "astro": "^1.6.0",
     "astro-icon": "^0.8.0",
-    "bootstrap-pretty": "0.2.0",
+    "bootstrap-pretty": "0.2.1",
     "clipboard": "^2.0.11",
     "sass": "^1.55.0"
   },
