@@ -25,7 +25,7 @@
     "@astrojs/sitemap": "^1.0.0",
     "@popperjs/core": "^2.11.6",
     "anchor-js": "^5.0.0",
-    "astro": "^1.6.0",
+    "astro": "latest",
     "astro-icon": "^0.8.0",
     "bootstrap-pretty": "0.2.1",
     "clipboard": "^2.0.11",
