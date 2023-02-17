@@ -7,7 +7,7 @@ import '@styles/bootstrap-pretty.scss';
 import { SITE, THEME_SECTIONS } from '@config';
 const { slug, palette, title, description, tags, shiki } = Astro.props;
 const showPaletteSelector = false;
-let stylesheetBase =  SITE.cdnUrl;;
+let stylesheetBase =  SITE.cdnUrl;
 if (import.meta.env.MODE == 'development') {
 	stylesheetBase = 'http://127.0.0.1:8080';
 }

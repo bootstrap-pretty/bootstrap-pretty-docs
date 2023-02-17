@@ -1174,21 +1174,21 @@ __metadata:
     anchor-js: ^5.0.0
     astro: latest
     astro-icon: ^0.8.0
-    bootstrap-pretty: 0.2.1
+    bootstrap-pretty: 0.2.2
     clipboard: ^2.0.11
     sass: ^1.55.0
   languageName: unknown
   linkType: soft
 
-"bootstrap-pretty@npm:0.2.1":
-  version: 0.2.1
-  resolution: "bootstrap-pretty@npm:0.2.1"
+"bootstrap-pretty@npm:0.2.2":
+  version: 0.2.2
+  resolution: "bootstrap-pretty@npm:0.2.2"
   dependencies:
     bootstrap: 5.3.0-alpha1
   peerDependencies:
     "@popperjs/core": "*"
     clipboard: "*"
-  checksum: 910dfdabe167006e4888ba307e75bfbbf83ee0f5415e6bc35c3e4ba4c102f77b2f07c8be2edee83f35280bf192445f59b9110392f0f91aa58d2d2155669d5c0e
+  checksum: 50d608a52d19da8eca23d997b5e4eb1f02a38a2008947b7c6dfa26caa1980d634c0e073d31e5990271c5201d5f1a3cd0df0e4d17c1863d1b3584ee4252ab0607
   languageName: node
   linkType: hard
 
@@ -4281,7 +4281,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shiki@npm:^0.11.1":
+"shiki@npm:0.11.1":
   version: 0.11.1
   resolution: "shiki@npm:0.11.1"
   dependencies:
@@ -4289,6 +4289,17 @@ __metadata:
     vscode-oniguruma: ^1.6.1
     vscode-textmate: ^6.0.0
   checksum: 2a4ebc3b466816263fc244ae4f67a4ff96aa74d863b9c5e7e4affc50f37fd6d1a781405de0dbf763b777bc33e49a0d441de7ff3fededb8b01e3b8dbb37e2927d
+  languageName: node
+  linkType: hard
+
+"shiki@patch:shiki@npm%3A0.11.1#./.yarn/patches/shiki-npm-0.11.1-b9c0a01cc1.patch::locator=bootstrap-pretty-docs%40workspace%3A.":
+  version: 0.11.1
+  resolution: "shiki@patch:shiki@npm%3A0.11.1#./.yarn/patches/shiki-npm-0.11.1-b9c0a01cc1.patch::version=0.11.1&hash=b4c421&locator=bootstrap-pretty-docs%40workspace%3A."
+  dependencies:
+    jsonc-parser: ^3.0.0
+    vscode-oniguruma: ^1.6.1
+    vscode-textmate: ^6.0.0
+  checksum: 348f0579fe00660111b3204433b5d610daf19d17767b5437bd39bee950d255262d91a20da5f5a36ac6c03bc99c7ca6bb0a7945e52e336d11ca8656527dc07c36
   languageName: node
   linkType: hard
 
