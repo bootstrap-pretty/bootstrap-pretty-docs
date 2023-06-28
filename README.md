@@ -2,20 +2,4 @@
 
 > Heads up! Bootstrap Pretty is in the early stages of development and may not be suitable for production environments.
 
-## Quick Start
-
-Install with npm: `npm install bootstrap-pretty`
-Install with yarn: `yarn add bootstrap-pretty`
-
-## Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:3000`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro --help` | Get help using the Astro CLI                     |
+To learn how to install and use Bootstrap Pretty, visit the [Bootstrap Pretty](https://github.com/bootstrap-pretty/bootstrap-pretty) repository.
