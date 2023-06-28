@@ -1,7 +1,7 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const PALETTES = require('bootstrap-pretty/palettes.json');
-const pkg = require('../package.json');
+// const pkg = require('../package.json');
 const DOCS_BOOTSTRAP_VERSION = '5.3';
 export const SITE = {
     author: "Steph Hays",
@@ -10,7 +10,8 @@ export const SITE = {
     url: 'https://bootstrappretty.dev',
     prettyUrl: 'bootstrappretty.dev',
     gitHubUrl: 'https://github.com/bootstrap-pretty/bootstrap-pretty-docs',
-    cdnUrl: `https://cdn.jsdelivr.net/npm/bootstrap-pretty@${pkg.dependencies['bootstrap-pretty']}`,
+    // cdnUrl: `https://cdn.jsdelivr.net/npm/bootstrap-pretty@${pkg.dependencies['bootstrap-pretty']}`,
+    cdnUrl: `https://cdn.jsdelivr.net/npm/bootstrap-pretty@0.2.2`,
     shikiTheme: 'dracula'
 };
 
