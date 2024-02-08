@@ -22,19 +22,19 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^1.0.0",
+    "@astrojs/sitemap": "^3.0.5",
     "@popperjs/core": "^2.11.6",
     "anchor-js": "^5.0.0",
-    "astro": "latest",
+    "astro": "4.3",
     "astro-icon": "^0.8.0",
     "bootstrap-pretty": "0.2.2",
     "clipboard": "^2.0.11",
     "sass": "^1.55.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.28.1"
+    "@playwright/test": "1.28.1"
   },
   "resolutions": {
-    "shiki@^0.11.1": "patch:shiki@npm%3A0.11.1#./.yarn/patches/shiki-npm-0.11.1-b9c0a01cc1.patch"
+    "shikiji@^0.9.18": "patch:shikiji@npm%3A0.9.19#./.yarn/patches/shikiji-npm-0.9.19-03bf5f62f6.patch"
   }
 }
