@@ -14,9 +14,9 @@ if (import.meta.env.MODE == 'development') {
 }
 ---
 
-{playwrightCategory === 'palettes' ? <link rel="stylesheet" href={`${stylesheetBase}/dist/css/${slug}/${palette}.min.css`} /> : <link rel="stylesheet" href={`${stylesheetBase}/dist/css/palettes/${fallback}/${fallback}.min.css`} />}
-
 <LayoutBase title={title} description={description} showPaletteSelector={showPaletteSelector}>
+	{playwrightCategory === 'palettes' ? <link slot="head-css" rel="stylesheet" href={`${stylesheetBase}/dist/css/${slug}/${palette}.min.css`} /> : <link slot="head-css"rel="stylesheet" href={`${stylesheetBase}/dist/css/palettes/${fallback}/${fallback}.min.css`} />}
+
 	<!-- Palettes pages -->
 	{
 		playwrightCategory === 'palettes' && (

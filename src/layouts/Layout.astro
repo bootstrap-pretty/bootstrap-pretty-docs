@@ -11,9 +11,9 @@ if (import.meta.env.MODE == 'development') {
 }
 ---
 
-{PALETTES.map(palette =>
-	<link rel="stylesheet" data-bp-palette={palette.title} href={`${stylesheetBase}/dist/css/${palette.slug}/${palette.palette}.min.css`} disabled />
-)}
 <LayoutRainbow title={title} description={description} showPaletteSelector={showPaletteSelector}>
+	{PALETTES.map(palette =>
+		<link slot="head-css" rel="stylesheet" data-bp-palette={palette.title} href={`${stylesheetBase}/dist/css/${palette.slug}/${palette.palette}.min.css`} disabled />
+	)}
 	<slot />
 </LayoutRainbow>

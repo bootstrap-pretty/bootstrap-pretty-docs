@@ -13,8 +13,8 @@ if (import.meta.env.MODE == 'development') {
 }
 ---
 
-<link rel="stylesheet" href={`${stylesheetBase}/dist/css/${slug}/${palette}.min.css`} />
 <LayoutRainbow title={title} description={description} showPaletteSelector={showPaletteSelector} shiki={shiki}>
+	<link slot="head-css" rel="stylesheet" href={`${stylesheetBase}/dist/css/${slug}/${palette}.min.css`} />
 	<button class="btn btn-link bg-body text-decoration-none border border-primary border-top-0 border-start-0 border-end-0 py-2 d-md-none sticky-top rounded-0 w-100" type="button" data-bs-toggle="offcanvas" data-bs-target="#cheatsheetNav" aria-controls="cheatsheetNav">On this page<Icon class="w-15-px ms-2" name="bi:chevron-expand" /></button>
 	<section class="container-xxl">
 		<div class="row">

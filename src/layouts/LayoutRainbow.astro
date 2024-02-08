@@ -8,6 +8,7 @@ const { title, description, showPaletteSelector, shiki } = Astro.props;
 ---
 
 <LayoutBase title={title} description={description} showPaletteSelector={showPaletteSelector} shiki={shiki}>
+	<slot name="head-css" slot="head-css"/>
 	<RainbowBorder />
 	<Header showPaletteSelector={showPaletteSelector} />
 	<main class="flex-grow-1">
