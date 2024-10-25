@@ -3,8 +3,15 @@ import LayoutCheatsheet from '@layouts/LayoutCheatsheet.astro';
 import { PALETTES_ROOT } from '@config';
 import '@styles/cheatsheet.scss';
 
+// Themes
+import synthax from 'bootstrap-pretty/shiki-themes/synthax.json';
+
 export async function getStaticPaths() {
 	return PALETTES_ROOT.map(({ slug = '', palette = '', title = '', description = '', tags = '', shiki = '' }) => {
+		if (shiki === 'synthax') {
+			shiki = synthax;
+		}
+
 		return {
 			params: { slug },
 			props: { slug, palette, title, description, tags, shiki }
